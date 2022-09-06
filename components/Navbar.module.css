@@ -1,0 +1,10 @@
+.nav {
+    background: pink;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    padding: 1rem 1rem;
+}
+
+.nav a:hover {
+    cursor: pointer;
+}
