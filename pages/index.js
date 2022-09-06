@@ -16,7 +16,7 @@ export default function Home(props) {
     <div className={styles.productContainer}>
         {props.products.map(product => {
           return (
-            <div className={styles.product}>
+            <div className={styles.product} key={product.name}>
               <Link href={product.slug}>
                 <a>
                   <h1>{product.name}</h1>
