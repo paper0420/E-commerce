@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import fs from 'fs'
 import matter from "gray-matter"
 import Link from 'next/link'
+import useCart from '../hooks/useCart'
 
 export default function Home(props) {
   const [totalNumberOfClicks, setTotalNumOfClicks] = useState(0);
@@ -12,17 +13,21 @@ export default function Home(props) {
     setTotalNumOfClicks(totalNumberOfClicks+1);
   }
 
+  const {cart, addItemToCart} = useCart();
+  console.log(cart);
+
   return (
     <div className={styles.productContainer}>
         {props.products.map(product => {
           return (
-            <div className={styles.product} key={product.name}>
-              <Link href={product.slug}>
+            <div className={styles.product}>
+              <Link href={product.slug} key={product.id}>
                 <a>
                   <h1>{product.name}</h1>
                 </a>
               </Link>
               <p>{product.description}</p>
+              <button onClick={()=> addItemToCart(product.id)}>Add to cart</button>
               <p className={styles.price}>${product.price/100}</p>
             </div>
           )
