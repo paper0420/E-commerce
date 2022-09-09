@@ -4,11 +4,13 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import {Normalize} from 'styled-normalize'
 import Navbar from '../components/Navbar'
+import React from 'react'
 
 
 function MyApp({ Component, pageProps }) {
   return (
-  <div className="container">
+   
+        <div className="container">
     <Normalize/>
     <Head>
       <title>E-Commerce</title>
@@ -33,6 +35,8 @@ function MyApp({ Component, pageProps }) {
 
   </div>
 
+  
+  
   )
 }
 

@@ -6,9 +6,12 @@ const useCart = () => {
     
     useEffect(()=>{
         const initialCart = getInitialCart();
+        console.log("Initail: "+initialCart);
+
         if(initialCart){
             setCart(initialCart);
         }
+        console.log("Hi");
 
     },[])
 
@@ -27,6 +30,7 @@ const useCart = () => {
         }else{
             setCart([...cart,{id,qty}])
         }
+
 
     };
     const remoeItemFromCart =(id)=>{
