@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 
 
 const Product = ({product: {data,content}}) => {
+    
     return (
         <div>
             <h1>{data.name}</h1>

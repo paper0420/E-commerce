@@ -5,6 +5,7 @@ import matter from "gray-matter"
 import Link from 'next/link'
 import useCart from '../hooks/useCart'
 
+
 export default function Home(props) {
   // const [totalNumberOfClicks, setTotalNumOfClicks] = useState(0);
   // const incrementNumberOfClicks = () => {
@@ -12,15 +13,14 @@ export default function Home(props) {
   // }
 
   const {cart, addItemToCart} = useCart();
-  console.log("Index:" + cart);
+  console.log(cart);
 
   return (
     <div className={styles.productContainer}>
         {props.products.map(product => {
             const handleClick = (e)=>{
-              e.preventDefault();
               e.stopPropagation();
-              addItemToCart(product.id);
+              addItemToCart(product);
             }
 
 

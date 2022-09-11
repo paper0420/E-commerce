@@ -3,8 +3,19 @@
     margin: 0 auto;
     font-size: 1.5rem;
     padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .nav a:hover {
     cursor: pointer;
+}
+
+.cart:hover {
+    cursor: pointer;
+}
+
+.button {
+    background: red;
+    width: 100%;
 }

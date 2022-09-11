@@ -5,12 +5,14 @@ import Image from 'next/image'
 import {Normalize} from 'styled-normalize'
 import Navbar from '../components/Navbar'
 import React from 'react'
+import CartProvider from '../context/Cart'
+import Cart from '../components/Cart'
 
 
 function MyApp({ Component, pageProps }) {
   return (
-   
-        <div className="container">
+   <CartProvider>
+    <div className="container">
     <Normalize/>
     <Head>
       <title>E-Commerce</title>
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }) {
     <div className="page">
       <Navbar/>
       <Component {...pageProps} />
+      <Cart/>
     </div>
 
 
@@ -34,7 +37,8 @@ function MyApp({ Component, pageProps }) {
       </footer>
 
   </div>
-
+  </CartProvider>
+    
   
   
   )

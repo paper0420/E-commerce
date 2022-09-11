@@ -10,10 +10,13 @@
   min-height: 200px;
   padding: 0 1rem;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .price {
   position: absolute;
+  bottom: 1rem;
   right: 1rem;
   font-size: 2rem;
+  margin: 0 0;
 }
