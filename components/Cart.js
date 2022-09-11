@@ -19,7 +19,7 @@ const Cart = () => {
                 <ul className={styles.ul}>
                     {cart.map((item)=>{
                         return (
-                        <li className={styles.item}>
+                        <li className={styles.item} key={item.id}>
                             <span>{item.qty} X {item.name}</span>
                             <span>${item.price/100}</span>
                         </li>
