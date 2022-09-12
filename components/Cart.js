@@ -1,14 +1,22 @@
-import styles from './Cart.module.css'
+import styles from './Cart.module.scss'
 import { BsXSquareFill } from "react-icons/bs";
 import useCart from '../hooks/useCart';
-const Cart = () => {
-    const {cart,isOpen,openCart,closeCart} = useCart();
+import { useRouter } from 'next/router';
+
+const Cart = (props) => {
+    const {cart,total} = useCart();
+    const router = useRouter();
+
     const handleClick = () => {
-        closeCart();
+        props.closeCart();
+    }
+
+    const navigateToCheckout = () => {
+        router.push("/checkout");
     }
 
     return(
-        <div className={styles.container}>
+        <div className={`${styles.container} ${props.isOpen ? styles.active: ''}`}>
             <div className={styles.xContainer}>
                 <BsXSquareFill className={styles.xIcon}
                 onClick={handleClick}/>
@@ -28,9 +36,9 @@ const Cart = () => {
                 </ul>
                 <div className={styles.total}>
                     <span>Total</span>
-                    <span>$500</span>
+                    <span>${total/100}</span>
                 </div>
-                <button className={styles.button}>Checkout</button>
+                <button className={styles.checkoutButton} onClick={navigateToCheckout}>Checkout</button>
 
             </div>
         </div>

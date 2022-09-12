@@ -1,0 +1,38 @@
+.item{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #aeaaaa;
+    margin: 0.25rem;
+}
+
+.ul {
+    padding: 1rem 0;
+}
+
+.total{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.checkoutButton {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background: linear-gradient(to right, #355c7d, #6c5b7b, #c06c84);
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 1ch;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+
+    }
+}

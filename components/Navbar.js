@@ -2,10 +2,12 @@ import Link from "next/link";
 import styles from './Navbar.module.css'
 import { BsCartFill } from "react-icons/bs";
 import useCart from '../hooks/useCart'
-const Navbar = () => {
-    const {Opencart} = useCart();
+
+const Navbar = (props) => {
+
+    //const {openCart} = useCart();
     const handleClick = () =>{
-        openCart();
+        props.openCart();
     }
     return (
         <div className={styles.nav}>

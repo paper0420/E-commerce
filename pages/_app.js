@@ -7,9 +7,18 @@ import Navbar from '../components/Navbar'
 import React from 'react'
 import CartProvider from '../context/Cart'
 import Cart from '../components/Cart'
+import {useState} from 'react'
 
 
 function MyApp({ Component, pageProps }) {
+  const [isOpen,setIsOpen] = useState(false);
+  const openCart = () => {
+    setIsOpen(true);
+}
+const closeCart = () => {
+    setIsOpen(false);
+}
+
   return (
    <CartProvider>
     <div className="container">
@@ -21,9 +30,9 @@ function MyApp({ Component, pageProps }) {
     </Head>
 
     <div className="page">
-      <Navbar/>
+      <Navbar cart={isOpen} openCart={openCart}/>
       <Component {...pageProps} />
-      <Cart/>
+      <Cart isOpen={isOpen} closeCart={closeCart}/>
     </div>
 
 

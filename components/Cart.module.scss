@@ -7,6 +7,15 @@
     background: linear-gradient(to right, #c9d6ff, #e2e2e2);
     width: 320px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    visibility: hidden;
+    opacity: 0;
+    transition:opacity 0.5s, visibility 0.5s;
+
+    &.active{
+        visibility: visible;
+        opacity: 1;
+
+    }
 }
 
 .xIcon {
@@ -49,7 +58,7 @@
     font-size: 2rem;
 }
 
-.button {
+.checkoutButton {
     margin-top: 10px;
     font-size: 1.2rem;
     outline: none;
@@ -58,8 +67,10 @@
     width: 100%;
     padding: 0.7rem;
     border-radius: 1ch;
-}
+    color:white;
 
-.button:hover{
-    cursor: pointer;
+    &:hover{
+        cursor: pointer;
+
+    }
 }

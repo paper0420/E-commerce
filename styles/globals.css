@@ -7,13 +7,15 @@
   background: linear-gradient(to right, #355c7d, #6c5b7b, #c06c84);
   color: #444;
 
+
 }
 
 .page {
-  background: lightgrey;
+  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
   width: 100%;
   max-width: 900px ;
   margin: 0 auto;
+  min-height: 100vh;
 
 }
 
