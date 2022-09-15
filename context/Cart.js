@@ -45,11 +45,17 @@ const Cart = ({children})=>{
         setCart(newCart);
     }
 
+    const clearCart = ()=> {
+        localStorage.removeItem("cart");
+        setCart([]);
+    }
+
     const exposed = {
         cart,
         addItemToCart,
         remoeItemFromCart,
         total,
+        clearCart
     }
 
     return <Context.Provider value={exposed}>{children}</Context.Provider>

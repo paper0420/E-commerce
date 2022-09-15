@@ -9,7 +9,7 @@ const Checkout = () => {
 
     return(
         <div>
-            <div>Checkout</div>
+            <h1>Checkout</h1>
             {cart.length > 0 ? (
             <div>
                 <ul className={styles.ul}>
