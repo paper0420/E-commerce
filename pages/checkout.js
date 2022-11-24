@@ -1,10 +1,20 @@
 import useCart from '../hooks/useCart';
 import styles from './checkout.module.scss'
+import {loadStripe} from '@stripe/stripe-js'
 
 const Checkout = () => {
     const {cart,total} = useCart();
-    const processPayment = () => {
-        console.log("Pay")
+
+    const processPayment = async () => {
+        const url = "/.vercel/api/checkout_session";
+        const newCart = cart.map(({id,qty})=>({
+            id,
+            qty,
+        }));
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+        const {data} = await fetch(url,{cart:newCart});
+
+        //await stripe.redirectToCheckout({sessionId:data.id});
     };
 
     return(
