@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/checkout_session.js": {
+      "pages/api/*.js": {
         "memory": 1024,
         "maxDuration": 5
       }
