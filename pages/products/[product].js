@@ -24,15 +24,14 @@ export const getStaticPaths =()=> {
     const paths = filenames.map(filename => {
         return {
             params: {
-                product: filename.replace('.md','')
+                product: filename.replace('.md', '')
             }
         }
-    })
+    });
 
-    return{
+    return {
         paths: paths,
         fallback: false
-
     }
 }
 
@@ -40,10 +39,10 @@ export const getStaticProps = async (context) => {
     const productName = context.params.product;
     const filePath = `${process.cwd()}/contents/${productName}.md`;
     const fileContent = fs.readFileSync(filePath).toString();
-    const {data, content} = matter(fileContent);
+    const { data, content } = matter(fileContent);
 
-    return{
-        props:{
+    return {
+        props: {
             product: {
                 data,
                 content
