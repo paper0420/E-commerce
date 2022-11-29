@@ -1,5 +1,5 @@
 .productContainer {
-  background: pink;
+  background: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 0.5rem;
@@ -11,6 +11,7 @@
   padding: 0 1rem;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 1ch;
 }
 
 .price {

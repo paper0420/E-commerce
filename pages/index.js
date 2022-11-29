@@ -9,7 +9,7 @@ export default function Home(props) {
   const { cart, addItemToCart } = useCart();
 
   return (
-    <div className={styles.productContainer}>
+    <div className="row g-3 row-cols-lg-5 row-cols-2 row-cols-md-3">
       {props.products.map(product => {
         const handleClick = (e) => {
           e.stopPropagation();
@@ -17,6 +17,7 @@ export default function Home(props) {
         }
 
         return (
+          <div className='col'>
           <div className={styles.product} key={product.id}>
             <Link href={product.slug}>
               <a>
@@ -27,6 +28,8 @@ export default function Home(props) {
             <button onClick={handleClick}>Add to cart</button>
             <p className={styles.price}>${product.price / 100}</p>
           </div>
+          </div>
+
         )
       })}
     </div>
