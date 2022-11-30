@@ -4,11 +4,15 @@ import fs from 'fs'
 import matter from "gray-matter"
 import Link from 'next/link'
 import useCart from '../hooks/useCart'
+import Product from '../components/Product'
+import Banner from '../components/Banner'
 
 export default function Home(props) {
   const { cart, addItemToCart } = useCart();
 
   return (
+    <>
+    <Banner/>
     <div className="row g-3 row-cols-lg-5 row-cols-2 row-cols-md-3">
       {props.products.map(product => {
         const handleClick = (e) => {
@@ -17,20 +21,12 @@ export default function Home(props) {
         }
 
         return (
-          <div className={styles.product} key={product.id}>
-            <Link href={product.slug}>
-              <a>
-                <h1>{product.name}</h1>
-              </a>
-            </Link>
-            <p>{product.description}</p>
-            <button onClick={handleClick}>Add to cart</button>
-            <p className={styles.price}>${product.price / 100}</p>
-          </div>
+          <Product product={product} addProduct={handleClick}/>
 
         )
       })}
     </div>
+    </>
   )
 }
 

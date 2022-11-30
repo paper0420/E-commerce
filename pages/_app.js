@@ -7,10 +7,10 @@ import Navbar from '../components/Navbar'
 import React from 'react'
 import CartProvider from '../context/Cart'
 import Cart from '../components/Cart'
-import Banner from '../components/Banner'
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Product from '../components/Product'
 
 
 
@@ -38,7 +38,6 @@ const closeCart = () => {
     <div className="mainBgAndFont">
       <div className="container-sm">
         <Navbar cart={isOpen} openCart={openCart}/>
-        <Banner/>
         <Component {...pageProps} />
         <Cart isOpen={isOpen} closeCart={closeCart}/>
       </div>
