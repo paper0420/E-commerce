@@ -17,7 +17,6 @@ export default function Home(props) {
         }
 
         return (
-          <div className='col'>
           <div className={styles.product} key={product.id}>
             <Link href={product.slug}>
               <a>
@@ -27,7 +26,6 @@ export default function Home(props) {
             <p>{product.description}</p>
             <button onClick={handleClick}>Add to cart</button>
             <p className={styles.price}>${product.price / 100}</p>
-          </div>
           </div>
 
         )
