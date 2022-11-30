@@ -21,7 +21,7 @@ export default function Home(props) {
         }
 
         return (
-          <Product product={product} addProduct={handleClick}/>
+          <Product key={product.id} product={product} addProduct={handleClick}/>
 
         )
       })}
