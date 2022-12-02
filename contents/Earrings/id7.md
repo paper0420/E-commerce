@@ -1,9 +1,9 @@
 ---
-id: 8
+id: 3
 name: Reindeer
 description: Reindeer Christmas Earrings
 price: 40
-image: "/productsImage/id3.jpg"
+image: "/productsImage/Earrings/id3.jpg"
 link: https://www.amazon.com/Christmas-Earrings-Holiday-Reindeer-Handmade/dp/B09GFC97H9/ref=sr_1_5?keywords=christmas+earrings&qid=1669954686&sprefix=christmas+e%2Caps%2C672&sr=8-5
 ---
 

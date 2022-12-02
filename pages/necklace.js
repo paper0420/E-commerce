@@ -1,13 +1,55 @@
+import fs from "fs";
+import matter from "gray-matter";
+import useCart from "../hooks/useCart";
+import Product from "../components/Product";
 import Banner from "../components/Banner";
-const Necklace = () => {
-    return (
-        <div>
-            <Banner/>
-            <h1>Up coming soon</h1>
-            <p>No products</p>
-        </div>
 
-    )
+const Necklace = (props) => {
+  const { cart, addItemToCart } = useCart();
+  return (
+    <>
+      <Banner />
+      <div className="row g-3 row-cols-lg-5 row-cols-2 row-cols-md-3">
+        {props.products.map((product) => {
+          const handleClick = (e) => {
+            e.stopPropagation();
+            addItemToCart(product);
+          };
 
-}
+          return (
+            <Product
+              key={product.id}
+              product={product}
+              addProduct={handleClick}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
+};
 export default Necklace;
+
+export const getStaticProps = async () => {
+  const directory = `${process.cwd()}/contents/Necklaces`;
+  const filenames = fs.readdirSync(directory);
+
+  const products = filenames.map((filename) => {
+    //red the file from fs
+    const fileContent = fs.readFileSync(`${directory}/${filename}`).toString();
+    //pull out frontmatter => name
+    const { data } = matter(fileContent);
+    const slug = `/products/${filename.replace(".md", "")}`;
+
+    return {
+      ...data,
+      slug: slug,
+    };
+  });
+
+  return {
+    props: {
+      products: products,
+    },
+  };
+};

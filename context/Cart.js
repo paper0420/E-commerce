@@ -6,6 +6,7 @@ const Cart = ({children})=>{
     const getInitialCart = () => JSON.parse(localStorage.getItem("cart"));
     const [cart,setCart] = useState([]);
     const [total,setTotal] = useState(0);
+    const [quantity,setQuantity] = useState(0);
     
     useEffect(()=>{
         const initialCart = getInitialCart();
@@ -22,8 +23,14 @@ const Cart = ({children})=>{
         localStorage.setItem("cart",JSON.stringify(cart));
 
         let newtotal = 0;
+        let newQuantity = 0;
         cart.forEach(item=>newtotal+=item.price*item.qty);
         setTotal(newtotal);
+
+        cart.forEach(item=>newQuantity+=item.qty);
+        setQuantity(newQuantity);
+
+
     },[cart])
 
     const addItemToCart = (product,qty=1)=>{
@@ -55,7 +62,8 @@ const Cart = ({children})=>{
         addItemToCart,
         remoeItemFromCart,
         total,
-        clearCart
+        clearCart,
+        quantity
     }
 
     return <Context.Provider value={exposed}>{children}</Context.Provider>
