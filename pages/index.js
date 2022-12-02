@@ -22,7 +22,6 @@ export default function Home(props) {
 
         return (
           <Product key={product.id} product={product} addProduct={handleClick}/>
-
         )
       })}
     </div>
