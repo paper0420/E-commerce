@@ -1,6 +1,6 @@
 ---
 id: 1
-name: BetseyJ flower
+name: BetseyJ-flower
 description: Carved Flower Medallion & Crystal Gem Drop Earrings
 price: 50
 image: "/productsImage/Earrings/id1.jpg"

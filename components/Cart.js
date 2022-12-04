@@ -17,7 +17,8 @@ const Cart = (props) => {
     }
 
     return(
-        <div className={`${styles.container} ${props.isOpen ? styles.active: ''}`}>
+        <div className='fixed-top'>
+             <div className={`${styles.container} ${props.isOpen ? styles.active: ''}`}>
             <div className={styles.xContainer}>
                 <BsXSquareFill className={styles.xIcon}
                 onClick={handleClick}/>
@@ -48,6 +49,8 @@ const Cart = (props) => {
 
             </div>
         </div>
+        </div>
+       
        
     )
 }

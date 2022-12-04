@@ -4,11 +4,12 @@ import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
 import useCart from "../hooks/useCart";
-import Product from "../components/Product";
+import ProductCard from "../components/ProductCard";
 import Banner from "../components/Banner";
 
 export default function Home(props) {
   const { cart, addItemToCart } = useCart();
+  
   return (
     <>
       <Banner />
@@ -20,7 +21,7 @@ export default function Home(props) {
           };
 
           return (
-            <Product
+            <ProductCard
               key={product.id}
               product={product}
               addProduct={handleClick}
@@ -33,22 +34,27 @@ export default function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const directory = `${process.cwd()}/contents/Earrings`;
-  const filenames = fs.readdirSync(directory);
+  const directory = `${process.cwd()}/contents`;
+  const categoryNames = fs.readdirSync(directory);
+  let products = [];
+  categoryNames.forEach(category => {
+    const categoryPath = `${process.cwd()}/contents/${category}`;
+    const filenames = fs.readdirSync(categoryPath);
 
-  const products = filenames.map((filename) => {
-    //red the file from fs
-    const fileContent = fs.readFileSync(`${directory}/${filename}`).toString();
-    //pull out frontmatter => name
-    const { data } = matter(fileContent);
-    const slug = `/products/${filename.replace(".md", "")}`;
-
-    return {
-      ...data,
-      slug: slug,
-    };
-  });
-
+    let subProduct = filenames.map(filename=>{
+      const fileContent = fs.readFileSync(`${directory}/${category}/${filename}`).toString();
+      //pull out frontmatter => name
+      const { data } = matter(fileContent);
+      const slug = `/products/Earrings/${filename.replace(".md", "")}`;
+      var y = {
+        ...data,
+        slug: slug,          
+        }
+      return y;
+    })
+    
+    products = [...products,...subProduct];
+  });    
   return {
     props: {
       products: products,

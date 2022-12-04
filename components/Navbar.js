@@ -38,12 +38,12 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" href="/category/Earrings">
                 <div style={styling}>Earrings</div>
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" href="/necklace">
+              <Link className="nav-link active" href="/category/Necklaces">
                 <div style={styling}>Necklace</div>
               </Link>
             </li>
@@ -96,8 +96,8 @@ const Navbar = (props) => {
             </button>
           </form>
           <div className="nav-item">
-            <div class="position-absolute top-0 end-0">
-              <span class="badge bg-danger">{quantity}</span>
+            <div className="position-absolute top-0 end-0">
+              <span className="badge bg-danger">{quantity}</span>
             </div>
             <button className="btn btn-outline-secondary m-1" href="#">
               <i className="bi bi-cart" onClick={handleClick}></i>
