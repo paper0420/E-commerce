@@ -38,7 +38,7 @@ export const getStaticProps = async () => {
         .toString();
       //pull out frontmatter => name
       const { data } = matter(fileContent);
-      const slug = `/products/Earrings/${filename.replace(".md", "")}`;
+      const slug = `/products/${category}/${filename.replace(".md", "")}`;
       var y = {
         ...data,
         slug: slug,

@@ -1,77 +1,91 @@
 .container {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right:0;
-    height: 100vh;
-    background: white;
-    border-radius: 2ch;
-    width: 320px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    visibility: hidden;
-    opacity: 0;
-    transition:opacity 0.5s, visibility 0.5s;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  background: white;
+  border-radius: 2ch;
+  width: 320px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
 
-    &.active{
-        visibility: visible;
-        opacity: 1;
-
-    }
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .xIcon {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 .xIcon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .xContainer {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.content{
-    padding: 1rem 2rem;
+.content {
+  padding: 1rem 2rem;
 }
 
 .title {
-    font-size: 2rem;
-    border-bottom: 1px solid #837f7f;
+  font-size: 2rem;
+  border-bottom: 1px solid #837f7f;
 }
 
-.item{
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #aeaaaa;
-    margin: 0.25rem;
+.item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #aeaaaa;
+  margin: 0.25rem;
 }
 
 .ul {
-    padding: 1rem 0;
+  padding: 1rem 0;
 }
 
-.total{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 600;
-    font-size: 2rem;
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 .checkoutButton {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    outline: none;
-    border: none;
-    background: linear-gradient(to right, #355c7d, #6c5b7b, #c06c84);
-    width: 100%;
-    padding: 0.7rem;
-    border-radius: 1ch;
-    color:white;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background: black;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 1ch;
+  color: white;
 
-    &:hover{
-        cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+}
 
-    }
+.cancelButton {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  background: lightgrey;
+  width: 100%;
+  padding: 0rem;
+  border-radius: 1ch;
+  color: rgb(255, 255, 255);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
