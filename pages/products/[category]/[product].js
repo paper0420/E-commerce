@@ -1,7 +1,6 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import useCart from "../../../hooks/useCart";
-import Link from 'next/link';
 
 export const getStaticPaths = () => {
     const directory = `${process.cwd()}/contents`;

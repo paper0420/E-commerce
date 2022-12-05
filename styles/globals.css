@@ -2,22 +2,13 @@
 
 .mainBgAndFont {
   font-family: 'Poppins', sans-serif;
-  background: white;
+  background: rgb(255, 255, 255);
   color: #444;
   padding-left: 0ch;
   padding-right: 0ch;
 
 }
 
-.page {
-  background: linear-gradient(to right, #c9d6ff, #e2e2e2);
-  width:100%;
-  max-width: 900px ;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding: 1rem 1rem;
-
-}
 
 a {
   color: inherit;

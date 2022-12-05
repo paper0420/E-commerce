@@ -1,33 +1,24 @@
-import styles from "../styles/Home.module.css";
-import { useState, useEffect } from "react";
 import fs from "fs";
 import matter from "gray-matter";
-import Link from "next/link";
-import useCart from "../hooks/useCart";
-import ProductCard from "../components/ProductCard";
 import Banner from "../components/Banner";
+import useSearchBox from "../hooks/useSearchBox";
+import ProductCardLists from "../components/ProductCardLists";
 
 export default function Home(props) {
-  const { cart, addItemToCart } = useCart();
-  
+  const { keyword } = useSearchBox();
+  const filteredProducts = props.products.filter((product) =>
+    product.description.toLowerCase().includes(keyword)
+  );
+
   return (
     <>
       <Banner />
-      <div className="row g-3 row-cols-lg-5 row-cols-2 row-cols-md-3">
-        {props.products.map((product) => {
-          const handleClick = (e) => {
-            e.stopPropagation();
-            addItemToCart(product);
-          };
-
-          return (
-            <ProductCard
-              key={product.id}
-              product={product}
-              addProduct={handleClick}
-            />
-          );
-        })}
+      <div className="">
+        {keyword.length <= 0 ? (
+          <ProductCardLists products={props.products} />
+        ) : (
+          <ProductCardLists products={filteredProducts} />
+        )}
       </div>
     </>
   );
@@ -37,24 +28,26 @@ export const getStaticProps = async () => {
   const directory = `${process.cwd()}/contents`;
   const categoryNames = fs.readdirSync(directory);
   let products = [];
-  categoryNames.forEach(category => {
+  categoryNames.forEach((category) => {
     const categoryPath = `${process.cwd()}/contents/${category}`;
     const filenames = fs.readdirSync(categoryPath);
 
-    let subProduct = filenames.map(filename=>{
-      const fileContent = fs.readFileSync(`${directory}/${category}/${filename}`).toString();
+    let subProduct = filenames.map((filename) => {
+      const fileContent = fs
+        .readFileSync(`${directory}/${category}/${filename}`)
+        .toString();
       //pull out frontmatter => name
       const { data } = matter(fileContent);
       const slug = `/products/Earrings/${filename.replace(".md", "")}`;
       var y = {
         ...data,
-        slug: slug,          
-        }
+        slug: slug,
+      };
       return y;
-    })
-    
-    products = [...products,...subProduct];
-  });    
+    });
+
+    products = [...products, ...subProduct];
+  });
   return {
     props: {
       products: products,

@@ -11,8 +11,15 @@ const styling = {
 const ProductCard = (props) => {
   return (
     <div className="">
-      <div className="card card-product h-100 ">
-        <div className="card-body h-75 d-inline-block ">
+      <div className="card card-product h-100">
+        <div
+          className="card-body h-75"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <div className="">
             <Link href={props.product.slug}>
               <img
@@ -26,35 +33,38 @@ const ProductCard = (props) => {
         </div>
 
         <div className="card-body ">
-            <div className="text-center text-small mb-1">
-              <Link
-                href={props.product.slug}
-                className="text-decoration-none text-muted" 
-              >
-                <small style={styling}>{props.product.name}</small>
-              </Link>
-            </div>
-            <h2 className="fs-6">
-                {props.product.description}
-            </h2>
-            <div>
-              <small className="text-warning">
-                {" "}
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-half"></i>
-              </small>{" "}
-              <span className="text-muted small">4.5(149)</span>
-            </div>
-            <div className="d-flex justify-content-between align-items-center mt-3">
+          <div className="text-center text-small mb-1">
+            <Link
+              href={props.product.slug}
+              className="text-decoration-none text-muted"
+            >
+              <small style={styling}>{props.product.name}</small>
+            </Link>
+          </div>
+          <h2 className="fs-6">{props.product.description}</h2>
+          <div>
+            <small className="text-warning">
+              {" "}
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-fill"></i>
+              <i className="bi bi-star-half"></i>
+            </small>{" "}
+            <span className="text-muted small">4.5(149)</span>
+          </div>
+          <div className="d-flex justify-content-between align-items-center mt-3">
             <div>
               <span className="text-dark">${props.product.price}</span>{" "}
-              <span className="text-decoration-line-through text-muted">$24</span>
+              <span className="text-decoration-line-through text-muted">
+                $24
+              </span>
             </div>
             <div>
-              <button className="btn btn-primary btn-sm" onClick={props.addProduct}>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={props.addProduct}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -73,7 +83,7 @@ const ProductCard = (props) => {
                 Add
               </button>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>

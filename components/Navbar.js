@@ -1,8 +1,6 @@
 import Link from "next/link";
-import styles from "./Navbar.module.css";
-import { BsCartFill } from "react-icons/bs";
 import useCart from "../hooks/useCart";
-import Image from "next/image";
+import useSearchBox from "../hooks/useSearchBox";
 
 const styling = {
   color: "inherit",
@@ -13,11 +11,16 @@ const styling = {
 
 const Navbar = (props) => {
   const { cart, quantity } = useCart();
+  const { keyword, onInputChange } = useSearchBox();
 
-  //const {openCart} = useCart();
   const handleClick = () => {
     props.openCart();
   };
+
+  const handleOnchange = (e) => {
+    onInputChange(e.target.value.toLowerCase());
+  };
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-light">
       <div className="container-fluid">
@@ -38,7 +41,11 @@ const Navbar = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" href="/category/Earrings">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                href="/category/Earrings"
+              >
                 <div style={styling}>Earrings</div>
               </Link>
             </li>
@@ -52,48 +59,16 @@ const Navbar = (props) => {
                 <div style={styling}>Bracelet</div>
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <Link
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <div style={styling}>Dropdown</div>
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Action
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Another action
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <Link className="dropdown-item" href="#">
-                    Something else here
-                  </Link>
-                </li>
-              </ul>
-            </li>
           </ul>
+
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search product here"
               aria-label="Search"
+              onChange={handleOnchange}
             />
-            <button className="btn btn-outline-secondary" type="submit">
-              Search
-            </button>
           </form>
           <div className="nav-item">
             <div className="position-absolute top-0 end-0">
