@@ -70,6 +70,20 @@ const Navbar = (props) => {
               onChange={handleOnchange}
             />
           </form>
+          <button className="btn btn-outline-secondary m-1" href="#">
+            <Link href="/login">
+              <div
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Log in
+              </div>
+            </Link>
+          </button>
+
           <div className="nav-item">
             <div className="position-absolute top-0 end-0">
               <span className="badge bg-danger">{quantity}</span>
