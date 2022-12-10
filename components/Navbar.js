@@ -1,6 +1,7 @@
 import Link from "next/link";
 import useCart from "../hooks/useCart";
 import useSearchBox from "../hooks/useSearchBox";
+import { useSession, signOut, getSession } from "next-auth/react";
 
 const styling = {
   color: "inherit",
@@ -12,6 +13,7 @@ const styling = {
 const Navbar = (props) => {
   const { cart, quantity } = useCart();
   const { keyword, onInputChange } = useSearchBox();
+  const { data: session, status } = useSession();
 
   const handleClick = () => {
     props.openCart();
@@ -70,19 +72,37 @@ const Navbar = (props) => {
               onChange={handleOnchange}
             />
           </form>
-          <button className="btn btn-outline-secondary m-1" href="#">
-            <Link href="/login">
-              <div
-                style={{
-                  color: "inherit",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Log in
-              </div>
-            </Link>
-          </button>
+          <div>
+            {status === "authenticated" ? (
+              <button className="btn btn-outline-secondary m-1" href="#">
+                <Link href="/account">
+                  <div
+                    style={{
+                      color: "inherit",
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {session.user.name}
+                  </div>
+                </Link>
+              </button>
+            ) : (
+              <button className="btn btn-outline-secondary m-1" href="#">
+                <Link href="/login">
+                  <div
+                    style={{
+                      color: "inherit",
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Log in
+                  </div>
+                </Link>
+              </button>
+            )}
+          </div>
 
           <div className="nav-item">
             <div className="position-absolute top-0 end-0">
