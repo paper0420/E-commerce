@@ -41,7 +41,10 @@ const Checkout = () => {
             <span>Total</span>
             <span>${total / 100}</span>
           </div>
-          <button className={styles.checkoutButton} onClick={processPayment}>
+          <button
+            className={`btn btn-dark mt-3 m-2 ${styles.checkoutButton}`}
+            onClick={processPayment}
+          >
             Process Payment
           </button>
         </div>

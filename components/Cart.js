@@ -46,12 +46,15 @@ const Cart = (props) => {
                 <span>${total / 100}</span>
               </div>
               <button
-                className={styles.checkoutButton}
+                className={`btn btn-dark mt-3 m-2 ${styles.checkoutButton}`}
                 onClick={navigateToCheckout}
               >
                 Checkout
               </button>
-              <button className={styles.cancelButton} onClick={clearCart}>
+              <button
+                className={`btn btn-light mt-3 m-2 ${styles.checkoutButton}`}
+                onClick={clearCart}
+              >
                 Clear orders
               </button>
             </>

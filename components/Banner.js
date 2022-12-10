@@ -17,7 +17,7 @@ const Banner = () => {
               </h2>
               <p className="lead">Fashion accessories made perfect</p>
               <a href="#!" className="btn btn-dark mt-3 m-2">
-                Shop Now <i className="feather-icon icon-arrow-right ms-1"></i>
+                Shop Now
               </a>
             </div>
           </div>
