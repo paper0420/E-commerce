@@ -36,14 +36,14 @@ const Cart = (props) => {
                       <span>
                         {item.qty} X {item.name}
                       </span>
-                      <span>${item.price / 100}</span>
+                      <span>${item.price}</span>
                     </li>
                   );
                 })}
               </ul>
               <div className={styles.total}>
                 <span>Total</span>
-                <span>${total / 100}</span>
+                <span>${total}</span>
               </div>
               <button
                 className={`btn btn-dark mt-3 m-2 ${styles.checkoutButton}`}
