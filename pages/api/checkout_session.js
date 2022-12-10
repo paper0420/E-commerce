@@ -8,17 +8,15 @@ const getProducts = () => {
 
   return filenames.map((filename) => {
     //read the file from fs
-    const fileContent = fs.readFileSync(`${directory}/${filename}`)
+    const fileContent = fs.readFileSync(`${directory}/${filename}`);
 
     const { data } = matter(fileContent);
     return data;
   });
 };
 
-
-
 export default async function handler(request, response) {
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     try {
       const cartItems = JSON.parse(request.body);
 
@@ -29,19 +27,19 @@ export default async function handler(request, response) {
 
         return {
           price_data: {
-            currency: 'aud',
+            currency: "aud",
             product_data: {
-              name: product.name
+              name: product.name,
             },
             unit_amount: product.price,
           },
-          quantity: qty
+          quantity: qty,
         };
       });
 
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
-        mode: 'payment',
+        mode: "payment",
         success_url: `${request.headers.origin}/?success=true`,
         cancel_url: `${request.headers.origin}/?canceled=true`,
       });
@@ -51,7 +49,7 @@ export default async function handler(request, response) {
       response.status(err.statusCode || 500).json(err.message);
     }
   } else {
-    response.setHeader('Allow', 'POST');
-    response.status(405).end('Method Not Allowed');
+    response.setHeader("Allow", "POST");
+    response.status(405).end("Method Not Allowed");
   }
 }

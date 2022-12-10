@@ -2,6 +2,24 @@ import Link from "next/link";
 import React from "react";
 
 const login = () => {
+  const handleLogin = async () => {
+    const email = document.querySelector("#typeEmailX").value;
+    const password = document.querySelector("#typePasswordX").value;
+    let data = {
+      email: email,
+      password: password,
+    };
+
+    console.log(data);
+    const response = await fetch("/api/sendpost", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+
+    var res = await response.json();
+    console.log("login   :" + res);
+  };
+
   return (
     <section className="gradient-custom">
       <div className="container py-5 h-100">
@@ -44,6 +62,7 @@ const login = () => {
                   <button
                     className="btn btn-outline-dark btn-lg px-5"
                     type="submit"
+                    onClick={handleLogin}
                   >
                     Login
                   </button>
