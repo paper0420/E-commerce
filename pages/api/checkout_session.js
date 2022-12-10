@@ -1,24 +1,39 @@
+import console from "console";
+
 const fs = require("fs");
 const matter = require("gray-matter");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const getProducts = () => {
   const directory = `${process.cwd()}/contents`;
-  const filenames = fs.readdirSync(directory);
+  const categoryNames = fs.readdirSync(directory);
+  let products = [];
+  categoryNames.forEach((category) => {
+    const categoryPath = `${process.cwd()}/contents/${category}`;
+    const filenames = fs.readdirSync(categoryPath);
 
-  return filenames.map((filename) => {
-    //read the file from fs
-    const fileContent = fs.readFileSync(`${directory}/${filename}`);
+    let subProduct = filenames.map((filename) => {
+      const fileContent = fs
+        .readFileSync(`${directory}/${category}/${filename}`)
+        .toString();
+      //pull out frontmatter => name
+      const { data } = matter(fileContent);
+      var y = {
+        ...data,
+      };
+      return y;
+    });
 
-    const { data } = matter(fileContent);
-    return data;
+    products = [...products, ...subProduct];
   });
+  return products;
 };
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
       const cartItems = JSON.parse(request.body);
+      console.log(request.body);
 
       const products = getProducts();
 
@@ -37,12 +52,16 @@ export default async function handler(request, response) {
         };
       });
 
+      console.log(stripe);
+
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: "payment",
         success_url: `${request.headers.origin}/?success=true`,
         cancel_url: `${request.headers.origin}/?canceled=true`,
       });
+
+      console.log("ss" + session);
 
       response.status(200).json(session.url);
     } catch (err) {
