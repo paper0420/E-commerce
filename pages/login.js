@@ -5,25 +5,26 @@ import { useSession, signIn, signOut } from "next-auth/react";
 const Login = () => {
   const { data: session } = useSession();
 
-  const handleLogin = async () => {
-    const email = document.querySelector("#typeEmailX").value;
-    const password = document.querySelector("#typePasswordX").value;
+  const handleLogin = async (loginSession) => {
+    const email = loginSession.user.email;
+    const name = loginSession.user.name;
     let data = {
       email: email,
-      password: password,
+      name: name,
     };
 
-    console.log(data);
+    console.log("submit user" + data);
     const response = await fetch("/api/sendpost", {
       method: "POST",
       body: JSON.stringify(data),
     });
 
     var res = await response.json();
-    console.log("login   :" + res);
+    console.log("user name has been uploaded   :" + res);
   };
 
   if (session) {
+    handleLogin(session);
     return (
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
