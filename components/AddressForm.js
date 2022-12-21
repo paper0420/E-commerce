@@ -1,6 +1,6 @@
 import React from "react";
 
-const signup = () => {
+const AddressForm = (props) => {
   return (
     <section className="h-100 h-custom gradient-custom-2">
       <div className="container py-5 h-100">
@@ -169,4 +169,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default AddressForm;
