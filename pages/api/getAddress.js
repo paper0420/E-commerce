@@ -10,7 +10,7 @@ export default async (req, res) => {
     )[0].Id;
 
     const address = await conn.query(
-      'SELECT "HouseId", "Street", "City", "ZipCode", "Country" FROM "Address" WHERE "AccountId" = $1 ',
+      'SELECT "HouseId", "Street", "City", "ZipCode", "Country", "Phonenumber" FROM "Address" WHERE "AccountId" = $1 ',
       [accountId]
     );
     //console.log(address.rows);

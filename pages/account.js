@@ -19,20 +19,25 @@ const Account = (props) => {
       <div>
         <h1>Welcome {session.user.name}</h1>
         <p>
-          Address: {props.address.houseId}
-          {props.address.street}
-          {props.address.city}
-          {props.address.zipCode}
-          {props.address.country}
+          Address: {props.address.houseId} {props.address.street}{" "}
+          {props.address.city} {props.address.zipCode} {props.address.country}
         </p>
-        <button className="btn btn-outline-secondary m-1">Edit address</button>
-        <AddressForm isOpen={isOpen} closeCart={closeCart} />
+        <p>Phone Number: {props.address.phoneNumber}</p>
         <button
           className="btn btn-outline-secondary m-1"
           onClick={() => signOut()}
         >
           Sign Out
         </button>
+        <button className="btn btn-outline-secondary m-1" onClick={openCart}>
+          Edit address
+        </button>
+        <AddressForm
+          isOpen={isOpen}
+          closeCart={closeCart}
+          name={session.user.name}
+          email={session.user.email}
+        />
       </div>
     );
   } else {
@@ -66,6 +71,7 @@ const getAddress = async (loginSession) => {
     city: res.City,
     zipCode: res.ZipCode,
     country: res.Country,
+    phoneNumber: res.Phonenumber,
   };
 };
 
