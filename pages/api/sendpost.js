@@ -16,6 +16,8 @@ export default async (req, res) => {
       const result = await conn.query(sqlInsert, values);
       console.log("ttt", result);
       res.status(200).json(result.command);
+    } else {
+      res.status(200).json({});
     }
   } catch (error) {
     console.log(error);

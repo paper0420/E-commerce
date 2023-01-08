@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 
 const AddressForm = (props) => {
   const router = useRouter();
+  console.log("addressForm ID " + props.id);
 
-  const handleClick = () => {
+  const handleClick = (newAddress) => {
+    props.onAddressUpdate(newAddress);
     props.closeCart();
     router.push("/account");
   };
@@ -27,6 +29,7 @@ const AddressForm = (props) => {
       zipCode: zipCode,
       country: country,
       phoneNumber: phoneNumber,
+      accountId: props.id,
     };
 
     console.log(data);
@@ -38,7 +41,18 @@ const AddressForm = (props) => {
 
     var res = await response.json();
     console.log("Address has been uploaded   :" + res);
-    handleClick();
+
+    let newAddress = {
+      houseId: houseId,
+      street: street,
+      city: city,
+      zipCode: zipCode,
+      country: country,
+      phoneNumber: phoneNumber,
+      accountId: props.id,
+    };
+
+    handleClick(newAddress);
   };
 
   return (

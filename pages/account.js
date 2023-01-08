@@ -4,8 +4,13 @@ import AddressForm from "../components/AddressForm";
 
 const Account = (props) => {
   const { data: session, status } = useSession();
-  const [address, setAddress] = useState({});
+  const [address, setAddress] = useState(props.address);
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleAddressUpdate = (newAddress) => {
+    setAddress(newAddress);
+  };
 
   const openCart = () => {
     setIsOpen(true);
@@ -19,10 +24,10 @@ const Account = (props) => {
       <div>
         <h1>Welcome {session.user.name}</h1>
         <p>
-          Address: {props.address.houseId} {props.address.street}{" "}
-          {props.address.city} {props.address.zipCode} {props.address.country}
+          Address: {address.houseId} {address.street} {address.city}{" "}
+          {address.zipCode} {address.country}
         </p>
-        <p>Phone Number: {props.address.phoneNumber}</p>
+        <p>Phone Number: {address.phoneNumber}</p>
         <button
           className="btn btn-outline-secondary m-1"
           onClick={() => signOut()}
@@ -37,6 +42,8 @@ const Account = (props) => {
           closeCart={closeCart}
           name={session.user.name}
           email={session.user.email}
+          id={props.address.accountId}
+          onAddressUpdate={handleAddressUpdate}
         />
       </div>
     );
@@ -66,12 +73,14 @@ const getAddress = async (loginSession) => {
 
   var res = await response.json();
   return {
-    houseId: res.HouseId,
-    street: res.Street,
-    city: res.City,
-    zipCode: res.ZipCode,
-    country: res.Country,
-    phoneNumber: res.Phonenumber,
+    // res,
+    houseId: res.address.HouseId,
+    street: res.address.Street,
+    city: res.address.City,
+    zipCode: res.address.ZipCode,
+    country: res.address.Country,
+    phoneNumber: res.address.Phonenumber,
+    accountId: res.accountId,
   };
 };
 
@@ -85,9 +94,7 @@ export const getServerSideProps = async (context) => {
       },
     };
   } else {
-    console.log("HI");
     const address = await getAddress(session);
-    console.log(address);
     return {
       props: {
         address: address,
