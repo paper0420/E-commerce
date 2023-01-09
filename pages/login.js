@@ -52,7 +52,10 @@ const Login = () => {
               <h2 className="fw-bold mb-2 text-uppercase">Please Login</h2>
               <div className="d-flex justify-content-center text-center mt-4 pt-1">
                 <a href="#!" className="text-dark">
-                  <i className="bi bi-facebook fa-lg"></i>
+                  <i
+                    className="bi bi-facebook fa-lg"
+                    onClick={() => signIn()}
+                  ></i>
                 </a>
                 <a href="#!" className="text-dark">
                   <i className="bi bi-twitter fa-lg mx-4 px-2"></i>
