@@ -1,9 +1,12 @@
 import useCart from "../hooks/useCart";
 import styles from "./checkout.module.scss";
+import { useRouter } from "next/router";
+import { useSession, getSession } from "next-auth/react";
 
-const Checkout = () => {
+const Checkout = (props) => {
   const { cart, total } = useCart();
-  console.log("here");
+  const { data: session, status } = useSession();
+  console.log(props.address.accountId);
 
   const processPayment = async () => {
     const cartItems = cart.map(({ id, qty }) => ({
@@ -16,8 +19,8 @@ const Checkout = () => {
       body: JSON.stringify(cartItems),
     });
 
-    var url = await response.json();
-    window.location = url;
+    var session = await response.json();
+    window.location = session.url;
   };
 
   return (
@@ -56,3 +59,48 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+const getAddress = async (loginSession) => {
+  const email = loginSession.user.email;
+  const name = loginSession.user.name;
+  let data = {
+    email: email,
+    name: name,
+  };
+
+  const response = await fetch("http://localhost:3000//api/getAddress", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+
+  var res = await response.json();
+  return {
+    // res,
+    houseId: res.address.HouseId,
+    street: res.address.Street,
+    city: res.address.City,
+    zipCode: res.address.ZipCode,
+    country: res.address.Country,
+    phoneNumber: res.address.Phonenumber,
+    accountId: res.accountId,
+  };
+};
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  } else {
+    const address = await getAddress(session);
+    return {
+      props: {
+        address: address,
+      },
+    };
+  }
+};

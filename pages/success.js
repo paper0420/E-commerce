@@ -1,10 +1,17 @@
 import useCart from "../hooks/useCart";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 const Success = () => {
   const { clearCart } = useCart();
+  const router = useRouter();
 
   useEffect(() => {
     clearCart();
+    //const { id } = router.query;
+    console.log(window.location);
+    var params = new URLSearchParams(window.location.search); //123;
+    console.log(params.get("id"));
   }, []);
 
   return (

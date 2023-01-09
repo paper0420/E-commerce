@@ -42,7 +42,7 @@ export default async function handler(request, response) {
 
         return {
           price_data: {
-            currency: "aud",
+            currency: "usd",
             product_data: {
               name: product.name,
             },
@@ -57,13 +57,13 @@ export default async function handler(request, response) {
       const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: "payment",
-        success_url: `${request.headers.origin}/?success=true`,
-        cancel_url: `${request.headers.origin}/?canceled=true`,
+        success_url: `${request.headers.origin}/success?id=`,
+        cancel_url: `${request.headers.origin}/cancelled`,
       });
 
-      console.log("ss" + session);
+      console.log("ss" + session.id);
 
-      response.status(200).json(session.url);
+      response.status(200).json(session);
     } catch (err) {
       response.status(err.statusCode || 500).json(err.message);
     }
