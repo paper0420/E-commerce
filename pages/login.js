@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn, signOut, getProviders } from "next-auth/react";
+import Facebook from "next-auth/providers/facebook";
 
 const Login = () => {
   const { data: session } = useSession();
