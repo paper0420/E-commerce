@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { useSession, signIn, signOut, getProviders } from "next-auth/react";
-import Facebook from "next-auth/providers/facebook";
 
 const Login = () => {
   const { data: session } = useSession();
@@ -55,7 +54,7 @@ const Login = () => {
                 <a href="#!" className="text-dark">
                   <i
                     className="bi bi-facebook fa-lg"
-                    onClick={() => signIn()}
+                    onClick={() => signIn("facebook")}
                   ></i>
                 </a>
                 <a href="#!" className="text-dark">
@@ -64,7 +63,7 @@ const Login = () => {
                 <a href="#!" className="text-dark">
                   <i
                     className="bi bi-google fa-lg"
-                    onClick={() => signIn()}
+                    onClick={() => signIn("google")}
                   ></i>
                 </a>
               </div>
