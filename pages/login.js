@@ -35,6 +35,12 @@ const Login = () => {
             >
               <h1>Login success!</h1>
               <p>Welcome, {session.user.email}</p>
+              <button
+                className="btn btn-outline-secondary m-1"
+                onClick={() => signOut()}
+              >
+                Sign-out
+              </button>
             </div>
           </div>
         </div>
