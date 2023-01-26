@@ -3,6 +3,7 @@ import conn from "../../lib/db";
 export default async (req, res) => {
   try {
     const input = JSON.parse(req.body);
+    console.log(input);
 
     const allMails = await conn.query('SELECT "Email" FROM "Account" ');
     console.log(allMails.rows);

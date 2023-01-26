@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
-console.log("clientId : " + process.env.GOOGLE_ID);
+//console.log("clientId : " + process.env.GOOGLE_ID);
 export default NextAuth({
   providers: [
     // OAuth authentication providers...
