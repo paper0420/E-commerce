@@ -6,12 +6,12 @@ export default async (req, res) => {
     console.log(input);
 
     const allMails = await conn.query('SELECT "Email" FROM "Account" ');
-    console.log(allMails.rows);
 
     const isEmailFound = allMails.rows.some(
       (item) => item.Email === input.email
     );
     if (!isEmailFound) {
+      console.log("EmailNotFound");
       const sqlInsert = `INSERT INTO "Account" ("Name", "Email") VALUES($1, $2)`;
       const values = [input.name, input.email];
       const result = await conn.query(sqlInsert, values);
