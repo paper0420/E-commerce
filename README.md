@@ -1,4 +1,4 @@
-This e-commerce web application is a personal project built for the purpose of practicing my programming skills. It offers a user-friendly interface for customers to browse and purchase products online, and includes features like user authentication, payments and product management, all built using technologies like Next.js, NextAuth, Stripe, Vercel, React, and Node.js
+This e-commerce web application is a personal project built for the purpose of practicing my programming skills. It offers a user-friendly interface for customers to browse and purchase products online, and includes features like user authentication, payments and product management, all built using technologies like Next.js, NextAuth, PostgresSQL, AWS RDS, Stripe, Vercel, React, and Node.js.
 
 # Getting Started
 
