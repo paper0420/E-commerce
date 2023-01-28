@@ -66,24 +66,17 @@ const getAddress = async (loginSession) => {
     name: name,
   };
 
-  const response = await fetch("http://localhost:3000//api/getAddress", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    "https://e-commerce-indol-nine.vercel.app//api/getAddress",
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+    }
+  );
 
   var res = await response.json();
   console.log(res);
   return res;
-  return {
-    // res,
-    houseId: res.address.HouseId,
-    street: res.address.Street,
-    city: res.address.City,
-    zipCode: res.address.ZipCode,
-    country: res.address.Country,
-    phoneNumber: res.address.Phonenumber,
-    accountId: res.accountId,
-  };
 };
 
 export const getServerSideProps = async (context) => {
