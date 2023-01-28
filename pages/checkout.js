@@ -68,10 +68,13 @@ const getAddress = async (loginSession) => {
     name: name,
   };
 
-  const response = await fetch("http://localhost:3000//api/getAddress", {
-    method: "POST",
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    "https://e-commerce-indol-nine.vercel.app//api/getAddress",
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+    }
+  );
 
   var res = await response.json();
   return {

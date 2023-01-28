@@ -64,9 +64,6 @@ const Login = () => {
                   ></i>
                 </a>
                 <a href="#!" className="text-dark">
-                  <i className="bi bi-twitter fa-lg mx-4 px-2"></i>
-                </a>
-                <a href="#!" className="text-dark">
                   <i
                     className="bi bi-google fa-lg"
                     onClick={() => signIn("google")}
