@@ -12,7 +12,6 @@ export default function Home(props) {
 
   return (
     <>
-      <h1>Hi</h1>
       <Banner />
       <div className="">
         {keyword.length <= 0 ? (
