@@ -67,7 +67,7 @@ const getAddress = async (loginSession) => {
   };
 
   const response = await fetch(
-    "https://e-commerce-indol-nine.vercel.app//api/getAddress",
+    "https://e-commerce-indol-nine.vercel.app/api/getAddress",
     {
       method: "POST",
       body: JSON.stringify(data),
