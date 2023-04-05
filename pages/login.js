@@ -59,13 +59,13 @@ const Login = () => {
               <div className="d-flex justify-content-center text-center mt-4 pt-1">
                 <a href="#!" className="text-dark">
                   <i
-                    className="bi bi-facebook fa-lg"
+                    className="bi bi-facebook fa-lg m-2"
                     onClick={() => signIn("facebook")}
                   ></i>
                 </a>
                 <a href="#!" className="text-dark">
                   <i
-                    className="bi bi-google fa-lg"
+                    className="bi bi-google fa-lg m-2"
                     onClick={() => signIn("google")}
                   ></i>
                 </a>

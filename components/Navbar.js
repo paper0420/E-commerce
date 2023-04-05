@@ -27,7 +27,10 @@ const Navbar = (props) => {
     <nav className="navbar sticky-top navbar-expand-lg bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          <div style={styling}>KasieJ</div>
+          {/* <div style={styling}>KasieJ</div> */}
+          <button type="button" class="btn btn-light">
+            KasieJ
+          </button>
         </Link>
         <button
           className="navbar-toggler"
@@ -48,17 +51,26 @@ const Navbar = (props) => {
                 aria-current="page"
                 href="/category/Earrings"
               >
-                <div style={styling}>Earrings</div>
+                {/* <div style={styling}>Earrings</div> */}
+                <button type="button" class="btn btn-light">
+                  Earrings
+                </button>
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active" href="/category/Necklaces">
-                <div style={styling}>Necklace</div>
+                {/* <div style={styling}>Necklace</div> */}
+                <button type="button" class="btn btn-light">
+                  Necklace
+                </button>
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link disabled" href="#">
-                <div style={styling}>Bracelet</div>
+                {/* <div style={styling}>Bracelet</div> */}
+                <button type="button" class="btn btn-light">
+                  Bracelet
+                </button>
               </Link>
             </li>
           </ul>
@@ -104,14 +116,15 @@ const Navbar = (props) => {
             )}
           </div>
 
-          <div className="nav-item">
-            <div className="position-absolute top-0 end-0">
+          <button
+            className="btn btn-outline-secondary m-1 position-relative"
+            href="#"
+          >
+            <i className="bi bi-cart" onClick={handleClick}></i>
+            <div className="position-absolute top-0 right-n5">
               <span className="badge bg-danger">{quantity}</span>
             </div>
-            <button className="btn btn-outline-secondary m-1" href="#">
-              <i className="bi bi-cart" onClick={handleClick}></i>
-            </button>
-          </div>
+          </button>
         </div>
       </div>
     </nav>
