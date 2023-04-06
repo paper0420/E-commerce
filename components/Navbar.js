@@ -120,10 +120,11 @@ const Navbar = (props) => {
             className="btn btn-outline-secondary m-1 position-relative"
             href="#"
           >
-            <i className="bi bi-cart" onClick={handleClick}></i>
-            <div className="position-absolute top-0 right-n5">
-              <span className="badge bg-danger">{quantity}</span>
-            </div>
+            <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
+              {quantity}
+            </span>
+
+            <i className="bi bi-cart " onClick={handleClick}></i>
           </button>
         </div>
       </div>
